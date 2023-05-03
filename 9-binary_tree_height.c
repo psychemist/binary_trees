@@ -1,14 +1,5 @@
 #include "binary_trees.h"
-/**
- * max - finds the maximum number od two integers
- * @x: first integer
- * @y: second integer
- * Return: max number
- */
-size_t max(size_t x, size_t y)
-{
-	return (x > y ? x : y);
-}
+size_t max(size_t x, size_t y);
 
 /**
  * binary_tree_height - measures the height of a binary tree
@@ -25,4 +16,15 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	return (max(binary_tree_height(tree->left),
 			binary_tree_height(tree->right)) + 1);
+}
+
+/**
+ * max - finds the maximum number od two integers
+ * @x: first integer
+ * @y: second integer
+ * Return: max number
+ */
+size_t max(size_t x, size_t y)
+{
+	return (x > y ? x : y);
 }
