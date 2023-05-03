@@ -18,7 +18,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 }
 
 /**
- * max - finds the maximum number od two integers
+ * max - finds the maximum number of two integers
  * @x: first integer
  * @y: second integer
  * Return: max number
