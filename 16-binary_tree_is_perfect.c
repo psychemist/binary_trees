@@ -1,6 +1,4 @@
 #include "binary_trees.h"
-int get_left_subtree_height(const binary_tree_t *tree);
-int get_right_subtree_height(const binary_tree_t *tree);
 /**
  * binary_tree_is_perfect - checks if a binary tree is perfect
  * @tree: pointer to the root node of the tree to check
@@ -40,7 +38,7 @@ int get_left_subtree_height(const binary_tree_t *tree)
 }
 
 /**
- * get_left_subtree_height - finds the height of left binary subtree
+ * get_right_subtree_height - finds the height of left binary subtree
  * @tree: pointer to the root node of the tree to check
  * Return: height of tree or 0 (NULL tree)
  */
