@@ -36,7 +36,7 @@ void binary_tree_print(const binary_tree_t *);
 size_t left_subtree_height(const binary_tree_t *tree);
 size_t right_subtree_height(const binary_tree_t *tree);
 size_t max(size_t x, size_t y);
-int _pow_recursion(int x, int y);
+int recursive_pow(int x, int y);
 
 /* mandatory tasks */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);

@@ -7,46 +7,68 @@
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	size_t height = 0;
+	size_t nodes = 0;
+	size_t power = 0;
+
 	if (!tree)
 		return (0);
 
-	if (tree && !tree->left && !tree->right)
+	if (!tree->right && !tree->left)
 		return (1);
 
-	int left_height = left_subtree_height(tree);
-	int right_height = right_subtree_height(tree);
+	height = binary_tree_height(tree);
+	nodes = binary_tree_size(tree);
 
-	if (left_height == right_height)
-	{
-		return (binary_tree_is_perfect(tree->left) &&
-			binary_tree_is_perfect(tree->right));
-	}
-
-	return (0);
+	power = (size_t)recursive_pow(2, height + 1);
+	return (power - 1 == nodes);
 }
 
 /**
- * left_subtree_height - finds the height of left binary subtree
- * @tree: pointer to the root node of the tree to check
- * Return: height of tree or 0 (NULL tree)
+ * recursive_pow - returns the value of x raised to the power of y
+ * @x: the value to exponentiate
+ * @y: the power to raise x to
+ * Return: x to the power of y, or -1 (negative y)
  */
-size_t left_subtree_height(const binary_tree_t *tree)
+
+int recursive_pow(int x, int y)
+{
+	if (y < 0)
+		return (-1);
+	if (y == 0)
+		return (1);
+	else
+		return (x * recursive_pow(x, y - 1));
+
+}
+
+/**
+ * binary_tree_size - measures the size of a binary tree
+ * @tree: pointer to tree to measure the size
+ * Return: size of tree or 0 (NULL tree)
+ */
+size_t binary_tree_size(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
 
-	return (left_subtree_height(tree->left) + 1);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
- * right_subtree_height - finds the height of left binary subtree
- * @tree: pointer to the root node of the tree to check
+ * binary_tree_height - measures the height of a binary tree
+ * @tree: pointer to tree to measure height
  * Return: height of tree or 0 (NULL tree)
  */
-size_t right_subtree_height(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
+	size_t height_left = 0;
+	size_t height_right = 0;
+
 	if (!tree)
 		return (0);
 
-	return (right_subtree_height(tree->right) + 1);
+	height_left = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	height_right = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	return (height_left > height_right ? height_left : height_right);
 }
