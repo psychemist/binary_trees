@@ -33,8 +33,8 @@ typedef struct binary_tree_s heap_t;
 
 /* helper functions */
 void binary_tree_print(const binary_tree_t *);
-int _get_left_subtree_height(const binary_tree_t *tree);
-int _get_right_subtree_height(const binary_tree_t *tree);
+size_t left_subtree_height(const binary_tree_t *tree);
+size_t right_subtree_height(const binary_tree_t *tree);
 size_t max(size_t x, size_t y);
 int _pow_recursion(int x, int y);
 
